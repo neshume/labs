@@ -13,6 +13,11 @@
 				"$haxe-error",
 				"$haxe-trace"
 			],
+            "presentation": {
+                "reveal": "never",
+                "panel": "dedicated",
+                "clear": true
+            },
 			"group": {
 				"kind": "build",
 				"isDefault": true
@@ -28,6 +33,11 @@
 				"$haxe-error",
 				"$haxe-trace"
 			],
+            "presentation": {
+                "reveal": "never",
+                "panel": "dedicated",
+                "clear": true
+            },
 			"group": "build",
 		},
 		{
@@ -40,6 +50,11 @@
 				"$haxe-error",
 				"$haxe-trace"
 			],
+            "presentation": {
+                "reveal": "never",
+                "panel": "dedicated",
+                "clear": true
+            },
 			"group": "build"
 		}
 	]
