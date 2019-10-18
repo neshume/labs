@@ -13,8 +13,11 @@ class Main extends dn.Process {
 		indicator.setPosition(50,50);
 		indicator.scale(100);
 
-		music = hxd.Res.music.play();
-		music.volume = 0.4;
+		#if js
+		music = hxd.Res.music_mp3.play();
+		#else
+		music = hxd.Res.music_wav.play();
+		#end
 	}
 
 	override function update() {
@@ -22,6 +25,7 @@ class Main extends dn.Process {
 
 		if( hxd.Key.isPressed(hxd.Key.SPACE) ) {
 			music.pause = !music.pause;
+			// music.volume = music.volume==0 ? 1 : 0;
 			indicator.tile = h2d.Tile.fromColor( music.pause ? 0xff0000 : 0x00ff00 );
 		}
 	}
