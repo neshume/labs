@@ -10,10 +10,7 @@
 			"type": "hl",
 			"hxml": "hl.sdl.hxml",
 			"cwd": "${workspaceFolder}",
-			"preLaunchTask": {
-				"type": "haxe",
-				"args": "active configuration"
-			}
+			"preLaunchTask": "HL SDL"
 		},
 		{
 			"name": "HashLink (attach)",
@@ -22,10 +19,7 @@
 			"type": "hl",
 			"hxml": "hl.sdl.hxml",
 			"cwd": "${workspaceFolder}",
-			"preLaunchTask": {
-				"type": "haxe",
-				"args": "active configuration"
-			}
+			"preLaunchTask": "HL SDL"
 		}
 	]
 }
