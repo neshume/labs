@@ -16,7 +16,7 @@ class Main extends dn.Process {
 		#if js
 		music = hxd.Res.music_mp3.play();
 		#else
-		music = hxd.Res.music_wav.play();
+		music = hxd.Res.music_ogg.play();
 		#end
 	}
 
