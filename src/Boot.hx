@@ -10,6 +10,7 @@ class Boot extends hxd.App {
 	override function init() {
 		ME = this;
 		hxd.Res.initEmbed();
+		hxd.Key.initialize();
 		new Main(s2d);
 		onResize();
 	}
