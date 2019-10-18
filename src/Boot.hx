@@ -11,6 +11,9 @@ class Boot extends hxd.App {
 		ME = this;
 		hxd.Res.initEmbed();
 		hxd.Key.initialize();
+		var console = new h2d.Console(hxd.Res.font.toFont(), s2d);
+		h2d.Console.HIDE_LOG_TIMEOUT = 9999;
+		dn.Lib.redirectTracesToH2dConsole(console);
 		new Main(s2d);
 		onResize();
 	}
