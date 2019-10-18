@@ -13,11 +13,7 @@ class Main extends dn.Process {
 		indicator.setPosition(50,50);
 		indicator.scale(100);
 
-		#if js
 		music = hxd.Res.music_mp3.play();
-		#else
-		music = hxd.Res.music_ogg.play();
-		#end
 	}
 
 	override function update() {
