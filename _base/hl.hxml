@@ -1,0 +1,6 @@
+-cp src
+-lib heaps
+-main Main
+-dce full
+-debug
+-hl bin/client.hl
