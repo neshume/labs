@@ -1,5 +1,0 @@
--cp src
--lib deepnightLibs
--main Boot
--dce full
--debug
