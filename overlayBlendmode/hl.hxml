@@ -7,5 +7,5 @@
 -lib hldx
 -lib deepnightLibs
 
--D windowSize=1024x768
+-D windowSize=1024x1024
 -hl bin/client.hl

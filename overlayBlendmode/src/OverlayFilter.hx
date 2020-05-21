@@ -1,9 +1,9 @@
 class OverlayFilter extends h2d.filter.Filter {
 	var pass : OverlayPass;
 
-	public function new(c:UInt) {
+	public function new(bgTexture:h3d.mat.Texture) {
 		super();
-		pass = new OverlayPass(c);
+		pass = new OverlayPass(bgTexture);
 	}
 
 	override function draw( ctx : h2d.RenderContext, t : h2d.Tile ) {
