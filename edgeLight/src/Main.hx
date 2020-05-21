@@ -7,6 +7,7 @@ class Main extends hxd.App {
 	var filter : EdgeLight;
 	var sun : h2d.Graphics;
 	var hero : h2d.Bitmap;
+	var autoRotate = true;
 
 	// Boot
 	static function main() new Main();
@@ -40,10 +41,20 @@ class Main extends hxd.App {
 	override function update(deltaTime:Float) {
 		super.update(deltaTime);
 
-		if( Key.isDown(Key.LEFT) )
+		if( Key.isDown(Key.LEFT) ) {
+			autoRotate = false;
 			filter.ang-=0.06;
+		}
 
-		if( Key.isDown(Key.RIGHT) )
+		if( Key.isDown(Key.RIGHT) ) {
+			autoRotate = false;
+			filter.ang+=0.06;
+		}
+
+		if( Key.isPressed(Key.SPACE) )
+			autoRotate = !autoRotate;
+
+		if( autoRotate )
 			filter.ang+=0.06;
 
 		sun.x = hero.x + hero.tile.width*0.5 + Math.cos(filter.ang)*20;
