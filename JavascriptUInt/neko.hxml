@@ -1,0 +1,6 @@
+-cp src
+-main Main
+-dce full
+-debug
+
+-neko bin/client.n

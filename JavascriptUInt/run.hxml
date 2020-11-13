@@ -1,0 +1,13 @@
+hl.hxml
+--cmd "echo HL:"
+--cmd "hl bin/client.hl"
+
+--next
+neko.hxml
+--cmd "echo Neko:"
+--cmd "neko bin/client.n"
+
+--next
+js.hxml
+--cmd "echo JS (Node):"
+--cmd "node bin/client.js"
