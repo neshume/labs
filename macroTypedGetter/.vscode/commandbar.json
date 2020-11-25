@@ -1,0 +1,15 @@
+{
+  "skipTerminateQuickPick": true,
+  "skipSwitchToOutput": false,
+  "skipErrorMessage": true,
+  "commands": [
+    {
+      "text": "☯ JS",
+      "color": "yellow",
+      "command": "haxe build.hxml",
+      "alignment": "right",
+      "skipTerminateQuickPick": false,
+      "priority": 0
+    }
+  ]
+}

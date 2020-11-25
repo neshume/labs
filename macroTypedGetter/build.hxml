@@ -1,0 +1,9 @@
+-cp src
+-main Main
+-dce full
+-debug
+
+-js bin/client.js
+
+--next
+--cmd node bin/client.js
