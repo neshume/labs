@@ -18,10 +18,10 @@ class Main extends hxd.App {
 		hxd.Res.initEmbed();
 
 		root = new h2d.Object(s2d);
-		root.scale(7);
+		root.scale(12);
 
 		// Image
-		var imgTile = hxd.Res.memento2.toTile();
+		var imgTile = hxd.Res.memento1.toTile();
 		var img = new h2d.Bitmap(imgTile, root);
 
 		// Light map
@@ -29,8 +29,8 @@ class Main extends hxd.App {
 		var h = Std.int(imgTile.height);
 		var g = new h2d.Graphics();
 		g.beginFill(0x0); g.drawRect(0,0,w,h);
-		var x = 58;
-		var y = 32;
+		var x = 70;
+		var y = 20;
 		var r = 20;
 		g.beginFill(0xffffff); g.drawCircle(x,y,r);
 		g.beginFill(0xffffff,0.3); g.drawCircle(x,y,r*1.15);
