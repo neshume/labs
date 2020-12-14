@@ -8,6 +8,7 @@ class Main extends hxd.App {
 	static function main() new Main();
 
 	// Engine ready
+	static var root : h2d.Object;
 	var f : h2d.filter.Filter;
 	override function init() {
 		ME = this;
@@ -16,37 +17,39 @@ class Main extends hxd.App {
 		hxd.Key.initialize();
 		hxd.Res.initEmbed();
 
-		var root = new h2d.Object(s2d);
-		root.scale(6);
+		root = new h2d.Object(s2d);
+		root.scale(7);
 
-		// Grid
-		var size = 256;
-		var grid = 16;
-		var rseed = new dn.Rand(0);
-		var g = new h2d.Graphics(root);
-		for(cx in 0...M.ceil(size/grid))
-		for(cy in 0...M.ceil(size/grid)) {
-			g.beginFill(C.makeColorHsl(rseed.range(0,1), 0, rseed.range(0,0.3)), 1);
-			g.drawRect(cx*grid, cy*grid, grid, grid);
-		}
+		// Image
+		var imgTile = hxd.Res.memento2.toTile();
+		var img = new h2d.Bitmap(imgTile, root);
 
-		// Knight
-		var knight = hxd.Res.knight.toTile();
-		var b = new h2d.Bitmap(knight, root);
-		// b.filter = new dn.heaps.filter.PixelOutline();
+		// Light map
+		var w = Std.int(imgTile.width);
+		var h = Std.int(imgTile.height);
+		var g = new h2d.Graphics();
+		g.beginFill(0x0); g.drawRect(0,0,w,h);
+		var x = 58;
+		var y = 32;
+		var r = 20;
+		g.beginFill(0xffffff); g.drawCircle(x,y,r);
+		g.beginFill(0xffffff,0.3); g.drawCircle(x,y,r*1.15);
+		g.beginFill(0xffffff,0.15); g.drawCircle(x,y,r*1.5);
+
+		var lightMapTex = new h3d.mat.Texture(w,h, [Target]);
+		g.drawTo(lightMapTex);
 
 		// Filter
-		var gradientMap = hxd.Res.gold.toTexture();
-		new dn.heaps.filter.GradientMap(gradientMap, 1, OnlyLights);
-		s2d.filter = f = new dn.heaps.filter.GradientMap(gradientMap, 0.66, OnlyShadows);
-		// s2d.filter = f = new TestFilter();
+		var gradientMap = hxd.Res.blue.toTexture();
+		root.filter = f = new dn.heaps.filter.GradientDarkness(lightMapTex, gradientMap, 1);
+		// root.filter = f = new TestFilter(lightMapTex, gradientMap);
 	}
 
 	override function update(dt:Float) {
 		super.update(dt);
 
 		if( hxd.Key.isPressed(hxd.Key.SPACE) )
-			s2d.filter = s2d.filter==null ? f : null;
+			root.filter = s2d.filter==null ? f : null;
 
 		if( hxd.Key.isPressed(hxd.Key.ESCAPE) )
 			hxd.System.exit();
