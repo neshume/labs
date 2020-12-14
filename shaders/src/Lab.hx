@@ -8,7 +8,7 @@ class Lab extends dn.Process {
 		// Image
 		var imgTile = hxd.Res.memento1.toTile();
 		var bmp = new h2d.Bitmap(imgTile, root);
-		root.filter = new dn.heaps.filter.GradientMap(hxd.Res.gold.toTexture(), OnlyShadows, 0.66);
+		root.filter = new dn.heaps.filter.GradientMap(hxd.Res.gold.toTexture(), OnlyShadows, 0.7);
 	}
 
 
