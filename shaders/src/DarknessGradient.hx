@@ -1,19 +1,20 @@
 class DarknessGradient extends dn.Process {
 	public function new() {
-		super();
+		super(Main.ME);
 
-		createRoot(Main.ME.s2d);
-		root.scale(12);
+		createRoot(Main.ME.root);
 
 		// Image
 		var imgTile = hxd.Res.memento1.toTile();
 		var img = new h2d.Bitmap(imgTile, root);
+		Main.ME.fit(imgTile.width, imgTile.height);
 
 		// Light map
 		var w = Std.int(imgTile.width);
 		var h = Std.int(imgTile.height);
 		var g = new h2d.Graphics();
 		g.beginFill(0x0); g.drawRect(0,0,w,h);
+		// root.addChild(g); // HACK
 		var x = 70;
 		var y = 20;
 		var r = 20;

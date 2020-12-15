@@ -1,5 +1,3 @@
-import dn.*;
-
 class ExperimentalFilter extends h2d.filter.Shader<InternalShader> {
 
 	public function new(lightMap:h3d.mat.Texture, shadowGradientMap:h3d.mat.Texture, intensity=1.0) {

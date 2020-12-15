@@ -1,33 +1,42 @@
-import dn.Color as C;
-import dn.M;
+/**
+	Docs:
+		https://gist.github.com/Yanrishatum/6eb2f6de05fc951599d5afccfab8d0a9
+		https://heaps.io/documentation/hxsl.html
+**/
 
-class Main extends hxd.App {
+class Main extends dn.Process {
 	public static var ME : Main;
 
-	// Boot
-	static function main() new Main();
-
-	// Engine ready
-	static var root : h2d.Object;
-	override function init() {
+	public function new() {
+		super();
+		createRoot(Boot.ME.s2d);
 		ME = this;
+		fit(160,100);
 
-		// Inits
-		hxd.Key.initialize();
-		hxd.Res.initEmbed();
-
-		// new DarknessGradient();
-		// new Outline();
-		new Lab();
+		// Bind 1-9 keys to lab classes
+		Boot.ME.s2d.addEventListener((ev)->{
+			switch ev.kind {
+				case EKeyDown:
+					if( ev.keyCode>=K.NUMBER_1 || ev.keyCode<=K.NUMBER_9 )
+						runLab( ev.keyCode-K.NUMBER_1 );
+				case _:
+			}
+		});
+		runLab(0);
 	}
 
-	override function update(dt:Float) {
-		super.update(dt);
+	function runLab(idx:Int) {
+		killAllChildrenProcesses();
+		switch idx {
+			case 0: new Lab();
+			case 1: new DarknessGradient();
+			case 2: new Outline();
+		}
+	}
 
-		dn.Process.updateAll(hxd.Timer.tmod);
-
-		if( hxd.Key.isPressed(hxd.Key.ESCAPE) )
-			hxd.System.exit();
+	public inline function fit(w:Float,h:Float) {
+		Boot.ME.s2d.scaleMode = LetterBox(M.ceil(w),M.ceil(h), true, Center, Center);
+		// Boot.ME.s2d.scaleMode = Zoom(2);
 	}
 }
 

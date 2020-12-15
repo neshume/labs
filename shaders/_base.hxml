@@ -1,5 +1,5 @@
 -cp src
--main Main
+-main Boot
 -dce full
 -debug
 

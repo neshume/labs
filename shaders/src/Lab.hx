@@ -1,9 +1,8 @@
 class Lab extends dn.Process {
 	public function new() {
-		super();
+		super(Main.ME);
 
-		createRoot(Main.ME.s2d);
-		root.scale(12);
+		createRoot(Main.ME.root);
 
 		// Image
 		var imgTile = hxd.Res.memento1.toTile();

@@ -1,9 +1,9 @@
 class Outline extends dn.Process {
 	public function new() {
-		super();
+		super(Main.ME);
 
-		createRoot(Main.ME.s2d);
-		root.scale(12);
+		createRoot(Main.ME.root);
+		Main.ME.fit(50,50);
 
 		// Image
 		var imgTile = hxd.Res.knight.toTile();
