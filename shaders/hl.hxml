@@ -1,11 +1,6 @@
--cp src
--main Main
--dce full
--debug
+_base.hxml
 
--lib heaps
 -lib hldx
--lib deepnightLibs
 
 -D windowSize=1600x1600
 -hl bin/client.hl

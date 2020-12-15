@@ -1,0 +1,7 @@
+-cp src
+-main Main
+-dce full
+-debug
+
+-lib heaps
+-lib deepnightLibs

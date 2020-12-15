@@ -4,19 +4,24 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "HL debug",
-            "type": "hxml",
-            "file": "hl.hxml",
+            "type": "haxe",
+            "args": "active configuration",
             "presentation": {
                 "reveal": "never",
                 "panel": "dedicated",
                 "clear": true
             },
-            "problemMatcher": ["$haxe"],
+            "problemMatcher": [
+                "$haxe-absolute",
+                "$haxe",
+                "$haxe-error",
+                "$haxe-trace"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "label": "haxeActiveConf"
         }
     ]
 }
