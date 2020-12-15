@@ -9,13 +9,13 @@ class Lab extends dn.Process {
 	public function new() {
 		super(Main.ME);
 		createRootInLayers(Main.ME.root,0);
-		Main.ME.fit(160,100);
 
 		// Image
 		var imgTile = hxd.Res.memento1.toTile();
 		var bmp = new h2d.Bitmap(imgTile, root);
 		wid = Std.int(imgTile.width);
 		hei = Std.int(imgTile.height);
+		Main.ME.fit(wid,hei);
 
 		// Light map
 		lightMapTex = new h3d.mat.Texture(wid,hei, [Target]);

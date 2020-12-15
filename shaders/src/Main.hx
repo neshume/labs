@@ -48,7 +48,7 @@ class Main extends dn.Process {
 
 	override function update() {
 		super.update();
-		// tf.text = ""+M.pretty( hxd.Timer.fps(),1 );
+		tf.text = ""+M.pretty( hxd.Timer.fps(),1 );
 	}
 }
 

@@ -9,12 +9,6 @@ class ExperimentalFilter extends h2d.filter.Shader<InternalShader> {
 		super(s);
 	}
 
-	public inline function useLightMap(t, disposePrevious=true) {
-		if( disposePrevious )
-			shader.lightMap.dispose();
-		shader.lightMap = t;
-	}
-
 	override function sync(ctx:h2d.RenderContext, s:h2d.Object) {
 		super.sync(ctx, s);
 		shader.time = hxd.Timer.frameCount;
@@ -30,6 +24,7 @@ private class InternalShader extends h3d.shader.ScreenShader {
 		@param var lightMap : Sampler2D;
 		@param var gradientMap : Sampler2D;
 		@param var intensity : Float;
+
 		@param var pixelSize : Float;
 		@param var time : Float;
 
