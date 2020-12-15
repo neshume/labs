@@ -17,7 +17,7 @@ class Main extends dn.Process {
 		Boot.ME.s2d.addEventListener((ev)->{
 			switch ev.kind {
 				case EKeyDown:
-					if( ev.keyCode>=K.NUMBER_1 || ev.keyCode<=K.NUMBER_9 )
+					if( ev.keyCode>=K.NUMBER_1 && ev.keyCode<=K.NUMBER_9 )
 						runLab( ev.keyCode-K.NUMBER_1 );
 				case _:
 			}

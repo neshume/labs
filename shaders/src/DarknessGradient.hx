@@ -14,7 +14,6 @@ class DarknessGradient extends dn.Process {
 		var h = Std.int(imgTile.height);
 		var g = new h2d.Graphics();
 		g.beginFill(0x0); g.drawRect(0,0,w,h);
-		// root.addChild(g); // HACK
 		var x = 70;
 		var y = 20;
 		var r = 20;

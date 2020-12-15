@@ -3,6 +3,7 @@ class Lab extends dn.Process {
 		super(Main.ME);
 
 		createRoot(Main.ME.root);
+		Main.ME.fit(160,100);
 
 		// Image
 		var imgTile = hxd.Res.memento1.toTile();
