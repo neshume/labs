@@ -2,7 +2,7 @@ class DarknessGradient extends dn.Process {
 	public function new() {
 		super(Main.ME);
 
-		createRoot(Main.ME.root);
+		createRootInLayers(Main.ME.root,0);
 
 		// Image
 		var imgTile = hxd.Res.memento1.toTile();

@@ -2,7 +2,7 @@ class Outline extends dn.Process {
 	public function new() {
 		super(Main.ME);
 
-		createRoot(Main.ME.root);
+		createRootInLayers(Main.ME.root,0);
 		Main.ME.fit(50,50);
 
 		// Image

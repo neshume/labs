@@ -6,12 +6,19 @@
 
 class Main extends dn.Process {
 	public static var ME : Main;
+	var tf : h2d.Text;
 
 	public function new() {
 		super();
 		createRoot(Boot.ME.s2d);
 		ME = this;
 		fit(160,100);
+
+		// FPS field
+		var font = hxd.Res.fonts.minecraftiaOutline.toFont();
+		tf = new h2d.Text(font);
+		root.add(tf,99);
+		tf.textColor = 0xffffff;
 
 		// Bind 1-9 keys to lab classes
 		Boot.ME.s2d.addEventListener((ev)->{
@@ -35,8 +42,13 @@ class Main extends dn.Process {
 	}
 
 	public inline function fit(w:Float,h:Float) {
-		Boot.ME.s2d.scaleMode = LetterBox(M.ceil(w),M.ceil(h), true, Center, Center);
+		Boot.ME.s2d.scaleMode = LetterBox(M.ceil(w),M.ceil(h), true);
 		// Boot.ME.s2d.scaleMode = Zoom(2);
+	}
+
+	override function update() {
+		super.update();
+		// tf.text = ""+M.pretty( hxd.Timer.fps(),1 );
 	}
 }
 
