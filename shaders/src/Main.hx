@@ -42,7 +42,7 @@ class Main extends dn.Process {
 	}
 
 	public inline function fit(w:Float,h:Float) {
-		Boot.ME.s2d.scaleMode = LetterBox(M.ceil(w),M.ceil(h), true);
+		Boot.ME.s2d.scaleMode = AutoZoom(M.ceil(w),M.ceil(h), true);
 		// Boot.ME.s2d.scaleMode = Zoom(2);
 	}
 

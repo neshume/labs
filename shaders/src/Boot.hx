@@ -18,6 +18,11 @@ class Boot extends hxd.App {
 		new Main();
 	}
 
+	override function onResize() {
+		super.onResize();
+		Process.resizeAll();
+	}
+
 	override function update(dt:Float) {
 		super.update(dt);
 

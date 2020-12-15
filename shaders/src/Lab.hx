@@ -24,7 +24,7 @@ class Lab extends dn.Process {
 		var gradientMap = hxd.Res.blue.toTexture();
 
 		// Filter
-		root.filter = new ExperimentalFilter();
+		root.filter = new dn.heaps.filter.Debug();
 	}
 
 	inline function cos(f:Float, spd=1.0) {
