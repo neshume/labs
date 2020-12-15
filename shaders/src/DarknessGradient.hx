@@ -33,10 +33,10 @@ class DarknessGradient extends dn.Process {
 		var f = new dn.heaps.filter.GradientDarkness(lightMapTex, gradientMap);
 		f.darknessColorMul = 0.6;
 
-		f.xDistortOffsetPx = 0.5;
+		f.xDistorPx = 0.5;
 		f.xDistortWaveLenPx = 30;
 
-		f.yDistortOffsetPx = 0.7;
+		f.yDistortPx = 0.7;
 		f.yDistortWaveLenPx = 35;
 		f.yDistortSpeed = 0.7;
 
