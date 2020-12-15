@@ -45,7 +45,7 @@ class DarknessGradient extends dn.Process {
 		lightMap.drawRect(0,0,wid,hei);
 
 		var t = hxd.Res.halo.toTile();
-		var s = 0.6;
+		var s = 0.4;
 		lightMap.beginTileFill(x-t.width*s*0.5, y-t.height*s*0.5, s,s, t);
 		lightMap.drawRect(x-t.width*s*0.5, y-t.height*s*0.5, t.width*s, t.height*s);
 		lightMap.endFill();

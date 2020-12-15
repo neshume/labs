@@ -24,7 +24,7 @@ class Lab extends dn.Process {
 		var gradientMap = hxd.Res.blue.toTexture();
 
 		// Filter
-		root.filter = new ExperimentalFilter(lightMapTex, gradientMap);
+		root.filter = new ExperimentalFilter();
 	}
 
 	inline function cos(f:Float, spd=1.0) {

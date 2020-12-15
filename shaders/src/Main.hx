@@ -29,7 +29,7 @@ class Main extends dn.Process {
 				case _:
 			}
 		});
-		runLab(0);
+		runLab(1);
 	}
 
 	function runLab(idx:Int) {
