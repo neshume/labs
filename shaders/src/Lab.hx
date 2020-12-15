@@ -31,13 +31,17 @@ class Lab extends dn.Process {
 		return Math.cos(ftime*0.02*spd) * f;
 	}
 
+	inline function sin(f:Float, spd=1.0) {
+		return Math.sin(0.7+ftime*0.02*spd) * f;
+	}
+
 	function renderLightMap(x,y) {
 		var g = new h2d.Graphics();
 		g.beginFill(0x0); g.drawRect(0,0,wid,hei);
 		var r = 20;
 		g.beginFill(0xffffff); g.drawCircle(x+cos(1,0.5), y, r+cos(1));
 		g.beginFill(0xffffff,0.3); g.drawCircle(x, y, r*1.3+cos(1));
-		g.beginFill(0xffffff,0.15); g.drawCircle(x,y,r*1.5+cos(2));
+		g.beginFill(0xffffff,0.15); g.drawCircle(x,y,r*1.5+sin(2));
 		g.beginFill(0xffffff,0.07); g.drawCircle(x,y,r*1.6);
 		g.drawTo(lightMapTex);
 	}
