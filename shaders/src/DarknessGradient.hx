@@ -1,5 +1,6 @@
 class DarknessGradient extends dn.Process {
 	var bg : h2d.Bitmap;
+	var darkness : dn.heaps.filter.GradientDarkness;
 	var lightMap : h2d.Object;
 	var lightMapTex : h3d.mat.Texture;
 	var wid : Int;
@@ -30,17 +31,17 @@ class DarknessGradient extends dn.Process {
 		var gradientMap = hxd.Res.blue.toTexture();
 
 		// Filter
-		var f = new dn.heaps.filter.GradientDarkness(lightMapTex, gradientMap);
-		f.darknessColorMul = 0.6;
+		darkness = new dn.heaps.filter.GradientDarkness(lightMapTex, gradientMap);
+		darkness.darknessColorMul = 0.6;
 
-		f.xDistorPx = 0.5;
-		f.xDistortWaveLenPx = 30;
+		darkness.xDistortPx = 0.5;
+		darkness.xDistortWaveLenPx = 30;
 
-		f.yDistortPx = 0.7;
-		f.yDistortWaveLenPx = 35;
-		f.yDistortSpeed = 0.7;
+		darkness.yDistortPx = 0.7;
+		darkness.yDistortWaveLenPx = 35;
+		darkness.yDistortSpeed = 0.7;
 
-		root.filter = f;
+		root.filter = darkness;
 		// root.filter = new dn.heaps.filter.Debug();
 
 		renderLightMap(x,y);
@@ -77,21 +78,21 @@ class DarknessGradient extends dn.Process {
 		bmp.blendMode = Add;
 
 		// Fixed lights
-		var rseed = new dn.Rand(0);
-		var pts = [
-			{ x:176, y:186 },
-			{ x:436, y:62 },
-			{ x:46, y:192 },
-			{ x:178, y:50 },
-			{ x:240, y:50 },
-		];
-		for(pt in pts) {
-			var bmp = new h2d.Bitmap(t, lightMap);
-			bmp.x = pt.x + bg.x;
-			bmp.y = pt.y + bg.y;
-			bmp.alpha = rseed.range(0.4,0.7);
-			bmp.blendMode = Add;
-		}
+		// var rseed = new dn.Rand(0);
+		// var pts = [
+		// 	{ x:176, y:186 },
+		// 	{ x:436, y:62 },
+		// 	{ x:46, y:192 },
+		// 	{ x:178, y:50 },
+		// 	{ x:240, y:50 },
+		// ];
+		// for(pt in pts) {
+		// 	var bmp = new h2d.Bitmap(t, lightMap);
+		// 	bmp.x = pt.x + bg.x;
+		// 	bmp.y = pt.y + bg.y;
+		// 	bmp.alpha = rseed.range(0.4,0.7);
+		// 	bmp.blendMode = Add;
+		// }
 
 		lightMap.drawTo(lightMapTex);
 	}
@@ -110,6 +111,9 @@ class DarknessGradient extends dn.Process {
 		bg.y = -y + viewHei*0.5;
 		bg.x = M.fclamp(bg.x, -(bg.tile.width-viewWid), 0);
 		bg.y = M.fclamp(bg.y, -(bg.tile.height-viewHei), 0);
+
+		darkness.xDistortCameraPx = -bg.x;
+		darkness.yDistortCameraPx = -bg.y;
 
 		// Refresh
 		renderLightMap(x,y);
