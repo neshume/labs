@@ -21,7 +21,7 @@ class Darkness extends dn.Process {
 		bg = new h2d.Bitmap(bgTile, root);
 		wid = Std.int(bgTile.width);
 		hei = Std.int(bgTile.height);
-		Main.ME.fit(350,250);
+		Main.ME.fit(250,250);
 
 		// Light map texture
 		lightMapTex = new h3d.mat.Texture(2,2, [Target]);
@@ -111,8 +111,8 @@ class Darkness extends dn.Process {
 		if( K.isDown(K.UP) ) y-=spd;
 		if( K.isDown(K.DOWN) ) y+=spd;
 
-		x = M.fmax(16,x);
-		y = M.fmax(22,y);
+		x = M.fclamp(x, 16, wid-16);
+		y = M.fclamp(y, 22, hei-16);
 
 		bg.x = -x + viewWid*0.5;
 		bg.y = -y + viewHei*0.5;
