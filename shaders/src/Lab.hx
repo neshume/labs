@@ -11,11 +11,11 @@ class Lab extends dn.Process {
 		createRootInLayers(Main.ME.root,0);
 
 		// Image
-		var imgTile = hxd.Res.memento1.toTile();
+		var imgTile = hxd.Res.cats.toTile();
 		var bmp = new h2d.Bitmap(imgTile, root);
 		wid = Std.int(imgTile.width);
 		hei = Std.int(imgTile.height);
-		Main.ME.fit(wid,hei);
+		Main.ME.fit(wid*0.66, hei*0.66);
 
 		// Light map
 		lightMapTex = new h3d.mat.Texture(wid,hei, [Target]);
@@ -24,7 +24,12 @@ class Lab extends dn.Process {
 		var gradientMap = hxd.Res.blue.toTexture();
 
 		// Filter
-		root.filter = new dn.heaps.filter.Debug();
+		// root.filter = new ExperimentalFilter();
+		root.filter = new h2d.filter.Group([
+			new dn.heaps.filter.Edge(),
+			new dn.heaps.filter.GradientMap(gradientMap),
+		]);
+		// root.filter = new dn.heaps.filter.Edge();
 	}
 
 	inline function cos(f:Float, spd=1.0) {
