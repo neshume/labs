@@ -8,7 +8,7 @@ class Outline extends dn.Process {
 		// Image
 		var imgTile = hxd.Res.knight.toTile();
 		var bmp = new h2d.Bitmap(imgTile, root);
-		bmp.setPosition(3,3);
+		bmp.setPosition(3,14);
 		bmp.filter = new dn.heaps.filter.PixelOutline(0xffcc00);
 	}
 }
