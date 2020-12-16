@@ -1,4 +1,4 @@
-class DarknessGradient extends dn.Process {
+class Darkness extends dn.Process {
 	var bg : h2d.Bitmap;
 	var darkness : dn.heaps.filter.GradientDarkness;
 	var lightMap : h2d.Object;
@@ -19,7 +19,7 @@ class DarknessGradient extends dn.Process {
 		// Image
 		var bgTile = hxd.Res.cats.toTile();
 		bg = new h2d.Bitmap(bgTile, root);
-		Main.ME.fit(200,200);
+		Main.ME.fit(300,300);
 		wid = Std.int(bgTile.width);
 		hei = Std.int(bgTile.height);
 
@@ -78,22 +78,22 @@ class DarknessGradient extends dn.Process {
 		bmp.blendMode = Add;
 
 		// Fixed lights
-		var rseed = new dn.Rand(0);
-		var pts = [
-			{ x:176, y:186 },
-			{ x:436, y:62 },
-			{ x:46, y:192 },
-			{ x:178, y:50 },
-			{ x:240, y:50 },
-		];
-		for(pt in pts) {
-			var bmp = new h2d.Bitmap(t, lightMap);
-			bmp.scale(0.66);
-			bmp.x = pt.x + bg.x;
-			bmp.y = pt.y + bg.y;
-			bmp.alpha = 0.3;
-			bmp.blendMode = Add;
-		}
+		// var rseed = new dn.Rand(0);
+		// var pts = [
+		// 	{ x:176, y:186 },
+		// 	{ x:436, y:62 },
+		// 	{ x:46, y:192 },
+		// 	{ x:178, y:50 },
+		// 	{ x:240, y:50 },
+		// ];
+		// for(pt in pts) {
+		// 	var bmp = new h2d.Bitmap(t, lightMap);
+		// 	bmp.scale(0.66);
+		// 	bmp.x = pt.x + bg.x;
+		// 	bmp.y = pt.y + bg.y;
+		// 	bmp.alpha = 0.3;
+		// 	bmp.blendMode = Add;
+		// }
 
 		lightMap.drawTo(lightMapTex);
 	}

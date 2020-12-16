@@ -36,7 +36,7 @@ class Main extends dn.Process {
 		killAllChildrenProcesses();
 		switch idx {
 			case 0: new Lab();
-			case 1: new DarknessGradient();
+			case 1: new Darkness();
 			case 2: new Outline();
 		}
 	}
