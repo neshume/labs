@@ -36,12 +36,12 @@ class Darkness extends dn.Process {
 		darkness.darknessEdgeEnhance = 0.3;
 		darkness.darknessColorMul = 0.7;
 
-		darkness.xDistortPx = 0.5;
-		darkness.xDistortWaveLenPx = 30;
+		// darkness.xDistortPx = 0.5;
+		// darkness.xDistortWaveLenPx = 30;
 
-		darkness.yDistortPx = 0.7;
-		darkness.yDistortWaveLenPx = 35;
-		darkness.yDistortSpeed = 0.7;
+		// darkness.yDistortPx = 0.7;
+		// darkness.yDistortWaveLenPx = 35;
+		// darkness.yDistortSpeed = 0.7;
 
 		// root.filter = new dn.heaps.filter.Debug();
 		renderLightMap(x,y);
