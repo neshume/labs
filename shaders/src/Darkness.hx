@@ -33,7 +33,7 @@ class Darkness extends dn.Process {
 		// Filter
 		darkness = new dn.heaps.filter.GradientDarkness(lightMapTex, gradientMap);
 		root.filter = darkness;
-		darkness.darknessEdgeEnhance = 0.3;
+		darkness.darknessEdgeEnhance = 0.45;
 		darkness.darknessColorMul = 0.7;
 
 		// darkness.xDistortPx = 0.5;
