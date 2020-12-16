@@ -19,7 +19,7 @@ class Darkness extends dn.Process {
 		// Image
 		var bgTile = hxd.Res.cats.toTile();
 		bg = new h2d.Bitmap(bgTile, root);
-		Main.ME.fit(300,300);
+		Main.ME.fit(300,200);
 		wid = Std.int(bgTile.width);
 		hei = Std.int(bgTile.height);
 
@@ -32,7 +32,9 @@ class Darkness extends dn.Process {
 
 		// Filter
 		darkness = new dn.heaps.filter.GradientDarkness(lightMapTex, gradientMap);
-		darkness.darknessColorMul = 0.6;
+		root.filter = darkness;
+		darkness.darknessEdgeEnhance = 0.3;
+		darkness.darknessColorMul = 0.7;
 
 		darkness.xDistortPx = 0.5;
 		darkness.xDistortWaveLenPx = 30;
@@ -41,9 +43,7 @@ class Darkness extends dn.Process {
 		darkness.yDistortWaveLenPx = 35;
 		darkness.yDistortSpeed = 0.7;
 
-		root.filter = darkness;
 		// root.filter = new dn.heaps.filter.Debug();
-
 		renderLightMap(x,y);
 	}
 
@@ -75,25 +75,27 @@ class Darkness extends dn.Process {
 		var bmp = new h2d.Bitmap(t, lightMap);
 		bmp.x = x + bg.x;
 		bmp.y = y + bg.y;
+		bmp.scale(1.5);
 		bmp.blendMode = Add;
 
 		// Fixed lights
-		// var rseed = new dn.Rand(0);
-		// var pts = [
-		// 	{ x:176, y:186 },
+		var rseed = new dn.Rand(0);
+		var pts = [
+			{ x:176, y:186 }, // TV
 		// 	{ x:436, y:62 },
-		// 	{ x:46, y:192 },
-		// 	{ x:178, y:50 },
-		// 	{ x:240, y:50 },
-		// ];
-		// for(pt in pts) {
-		// 	var bmp = new h2d.Bitmap(t, lightMap);
-		// 	bmp.scale(0.66);
-		// 	bmp.x = pt.x + bg.x;
-		// 	bmp.y = pt.y + bg.y;
-		// 	bmp.alpha = 0.3;
-		// 	bmp.blendMode = Add;
-		// }
+			// { x:46, y:192 },
+		// 	{ x:178, y:50 }, // entrance left
+		// 	{ x:240, y:50 }, // entrance right
+		];
+		for(pt in pts) {
+			var bmp = new h2d.Bitmap(t, lightMap);
+			bmp.scale(0.66);
+			bmp.x = pt.x + bg.x;
+			bmp.y = pt.y + bg.y;
+			bmp.scale(0.8);
+			bmp.alpha = rnd(0.8,1)*0.7;
+			bmp.blendMode = Add;
+		}
 
 		lightMap.drawTo(lightMapTex);
 	}
