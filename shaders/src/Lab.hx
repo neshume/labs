@@ -29,7 +29,6 @@ class Lab extends dn.Process {
 			new dn.heaps.filter.Edge(),
 			new dn.heaps.filter.GradientMap(gradientMap),
 		]);
-		// root.filter = new dn.heaps.filter.Edge();
 	}
 
 	inline function cos(f:Float, spd=1.0) {
