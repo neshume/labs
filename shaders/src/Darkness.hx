@@ -19,9 +19,9 @@ class Darkness extends dn.Process {
 		// Image
 		var bgTile = hxd.Res.cats.toTile();
 		bg = new h2d.Bitmap(bgTile, root);
-		Main.ME.fit(300,200);
 		wid = Std.int(bgTile.width);
 		hei = Std.int(bgTile.height);
+		Main.ME.fit(350,250);
 
 		// Light map texture
 		lightMapTex = new h3d.mat.Texture(2,2, [Target]);
@@ -33,23 +33,22 @@ class Darkness extends dn.Process {
 		// Filter
 		darkness = new dn.heaps.filter.GradientDarkness(lightMapTex, gradientMap);
 		root.filter = darkness;
-		darkness.darknessEdgeEnhance = 0.45;
+		darkness.darknessEdgeEnhance = 0.4;
 		darkness.darknessColorMul = 0.7;
 
-		// darkness.xDistortPx = 0.5;
-		// darkness.xDistortWaveLenPx = 30;
+		darkness.xDistortPx = 0.8;
+		darkness.xDistortWaveLenPx = 32;
+		darkness.xDistortSpeed = 0.5;
 
-		// darkness.yDistortPx = 0.7;
-		// darkness.yDistortWaveLenPx = 35;
-		// darkness.yDistortSpeed = 0.7;
+		darkness.yDistortPx = 0.8;
+		darkness.yDistortWaveLenPx = 32;
+		darkness.yDistortSpeed = 0.5;
 
-		// root.filter = new dn.heaps.filter.Debug();
 		renderLightMap(x,y);
 	}
 
 	inline function initLightMapTex() {
-		lightMapTex.resize( M.ceil(Boot.ME.s2d.width), M.ceil(Boot.ME.s2d.height) );
-		trace(lightMapTex.width+"x"+lightMapTex.height);
+		lightMapTex.resize( viewWid, viewHei);
 	}
 
 	override function onResize() {
@@ -66,22 +65,24 @@ class Darkness extends dn.Process {
 
 		// Black base
 		var base = new h2d.Bitmap( h2d.Tile.fromColor(0x0), lightMap );
-		base.scaleX = viewWid;
-		base.scaleY = viewHei;
+		base.scaleX = wid;
+		base.scaleY = hei;
 
 		// Player light
-		var t = hxd.Res.halo.toTile();
+		var t = hxd.Res.haloRamp.toTile();
 		t.setCenterRatio();
 		var bmp = new h2d.Bitmap(t, lightMap);
 		bmp.x = x + bg.x;
 		bmp.y = y + bg.y;
-		bmp.scale(1.5);
+		bmp.scale(1.2);
 		bmp.blendMode = Add;
 
 		// Fixed lights
+		var t = hxd.Res.halo.toTile();
+		t.setCenterRatio();
 		var rseed = new dn.Rand(0);
 		var pts = [
-			{ x:176, y:186 }, // TV
+			{ x:165, y:196 }, // TV
 		// 	{ x:436, y:62 },
 			// { x:46, y:192 },
 		// 	{ x:178, y:50 }, // entrance left
@@ -92,7 +93,7 @@ class Darkness extends dn.Process {
 			bmp.scale(0.66);
 			bmp.x = pt.x + bg.x;
 			bmp.y = pt.y + bg.y;
-			bmp.scale(0.8);
+			bmp.scale(1.2);
 			bmp.alpha = rnd(0.8,1)*0.7;
 			bmp.blendMode = Add;
 		}
@@ -109,6 +110,9 @@ class Darkness extends dn.Process {
 		if( K.isDown(K.RIGHT) ) x+=spd;
 		if( K.isDown(K.UP) ) y-=spd;
 		if( K.isDown(K.DOWN) ) y+=spd;
+
+		x = M.fmax(16,x);
+		y = M.fmax(22,y);
 
 		bg.x = -x + viewWid*0.5;
 		bg.y = -y + viewHei*0.5;
