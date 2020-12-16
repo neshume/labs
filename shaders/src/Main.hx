@@ -7,12 +7,16 @@
 class Main extends dn.Process {
 	public static var ME : Main;
 	var tf : h2d.Text;
+	public var bg : h2d.Bitmap;
 
 	public function new() {
 		super();
 		createRoot(Boot.ME.s2d);
 		ME = this;
 		fit(160,100);
+
+		bg = new h2d.Bitmap( h2d.Tile.fromColor(0x444444) );
+		root.add(bg,0);
 
 		// FPS field
 		var font = hxd.Res.fonts.minecraftiaOutline.toFont();
@@ -30,6 +34,8 @@ class Main extends dn.Process {
 			}
 		});
 		runLab(0);
+
+		Process.resizeAll();
 	}
 
 	function runLab(idx:Int) {
@@ -44,6 +50,11 @@ class Main extends dn.Process {
 	public inline function fit(w:Float,h:Float) {
 		Boot.ME.s2d.scaleMode = AutoZoom(M.ceil(w),M.ceil(h), true);
 		// Boot.ME.s2d.scaleMode = Zoom(2);
+	}
+	override function onResize() {
+		super.onResize();
+		bg.scaleX = w();
+		bg.scaleY = h();
 	}
 
 	override function update() {
