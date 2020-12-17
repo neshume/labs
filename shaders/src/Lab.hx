@@ -5,6 +5,7 @@ class Lab extends dn.Process {
 	var hei : Int;
 	var x = 70.;
 	var y = 30.;
+	var f : ExperimentalFilter;
 
 	public function new() {
 		super(Main.ME);
@@ -24,11 +25,12 @@ class Lab extends dn.Process {
 		var gradientMap = hxd.Res.blue.toTexture();
 
 		// Filter
-		// root.filter = new ExperimentalFilter();
-		root.filter = new h2d.filter.Group([
-			new dn.heaps.filter.Edge(),
-			new dn.heaps.filter.GradientMap(gradientMap),
-		]);
+		f = new ExperimentalFilter(2, 64, 3);
+		root.filter = f;
+		// root.filter = new h2d.filter.Group([
+		// 	new dn.heaps.filter.Edge(),
+		// 	new dn.heaps.filter.GradientMap(gradientMap),
+		// ]);
 	}
 
 	inline function cos(f:Float, spd=1.0) {
@@ -74,5 +76,7 @@ class Lab extends dn.Process {
 
 		// Refresh
 		renderLightMap(x,y);
+
+		f.intensity = 0.5+Math.cos(ftime*0.1)*0.5;
 	}
 }
